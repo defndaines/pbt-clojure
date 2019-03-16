@@ -17,6 +17,16 @@
     (a-boolean x)))
 
 
+;; Chapter 2. Writing Properties
+;; Find biggest element in list.
+
+(defspec prop-biggest
+  100
+  (prop/for-all [v (gen/vector gen/int)]
+    (= (pbt/biggest v)
+       (last (sort v)))))
+
+
 (comment
 
   (require '[clojure.test.check :as tc])
