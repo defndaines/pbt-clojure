@@ -17,6 +17,11 @@ My intent is to commit snippets in the order code appears in the book.
 Theoretically, someone could then use the commit history to reproduce a
 reading of the book.
 
+I will use [test.check](https://clojure.github.io/test.check/) as the core
+testing library, and will mix in [spec](https://clojure.org/guides/spec),
+since my goal it to build an experience which maps to how I would want to use
+the libraries in a work situation.
+
 
 ## Usage
 
