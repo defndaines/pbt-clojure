@@ -1,6 +1,6 @@
 (ns pbt.core)
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn biggest
+  "Find the biggest integer in a list."
+  [v]
+  (first v))
