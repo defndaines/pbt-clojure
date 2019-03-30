@@ -22,9 +22,9 @@
 
 (defspec prop-biggest
   100
-  (prop/for-all [v (gen/vector gen/int)]
-    (= (pbt/biggest v)
-       (last (sort v)))))
+  (prop/for-all [v (gen/such-that not-empty (gen/vector gen/int))]
+    (= (last (sort v))
+       (pbt/biggest v))))
 
 
 (comment
