@@ -7,5 +7,5 @@
          big head]
     (cond
       (nil? head) big
-      (< big head) (recur tail head)
+      (<= big head) (recur tail head)
       (< head big) (recur tail big))))
