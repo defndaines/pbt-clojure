@@ -26,6 +26,15 @@
     (= (last (sort v))
        (pbt/biggest v))))
 
+;; Exercises, Question 2.
+
+(defspec prop-question-2
+  100
+  (prop/for-all [x gen/int
+                 n gen/pos-int]
+    (let [l (range x (+ x n))]
+      (and (= n (count l))
+           (pbt/increments? l)))))
 
 (comment
 
