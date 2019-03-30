@@ -10,5 +10,3 @@ pom.xml.asc
 /.nrepl-port
 *.swp
 scratch.clj
-/STATUS
-/TODO
