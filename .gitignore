@@ -9,3 +9,6 @@ pom.xml.asc
 /.lein-*
 /.nrepl-port
 *.swp
+scratch.clj
+/STATUS
+/TODO
