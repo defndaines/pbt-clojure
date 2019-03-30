@@ -36,6 +36,7 @@
       (and (= n (count l))
            (pbt/increments? l)))))
 
+
 (comment
 
   (require '[clojure.test.check :as tc])
@@ -46,6 +47,4 @@
     (prop/for-all [x gen/any]
       (a-boolean x)))
 
-  (tc/quick-check 100 boolean-property)
-
-  )
+  (tc/quick-check 100 boolean-property))

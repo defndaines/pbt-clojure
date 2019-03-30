@@ -6,4 +6,6 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/test.check "0.9.0"]]
-  :repl-options {:init-ns pbt.core})
+  :repl-options {:init-ns pbt.core}
+  :cljfmt {:remove-consecutive-blank-lines? false
+           :indents {for-all [[:inner 0]]}})
