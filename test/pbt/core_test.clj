@@ -1,7 +1,5 @@
 (ns pbt.core-test
-  (:require [clojure.test :refer [deftest testing is]]
-            [clojure.test.check :as tc]
-            [clojure.test.check.generators :as gen]
+  (:require [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
             [clojure.test.check.clojure-test :refer [defspec]]
             [pbt.core :as pbt]))
