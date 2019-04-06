@@ -30,6 +30,8 @@
       (= known-last (last known-list)))))
 
 
+;; Testing _invariant properties_ against core `sort`.
+
 (defn ordered?
   "Given a sequence, assert if each pair is ordered."
   [s]
