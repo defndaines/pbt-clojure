@@ -19,3 +19,11 @@
 (defn model-biggest  ; note: The function doesn't have to appear before use!
   [s]
   (last (sort s)))
+
+(defspec prop-last
+  100
+  ;; pick a list and a last number.
+  (prop/for-all [gend-list (gen/vector gen/int)
+                 known-last gen/int]
+    (let [known-list (conj gend-list known-last)]
+      (= known-last (last known-list)))))
