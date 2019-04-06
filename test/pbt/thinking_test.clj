@@ -58,3 +58,31 @@
   100
   (prop/for-all [s gen-list-of-comparable]
     (ordered? (sort s))))
+
+(defspec prop-same-size
+  ;; The sorted and unsorted lists should both remain the same size.
+  100
+  (prop/for-all [s gen-list-of-comparable]
+    (= (count s)
+       (count (sort s)))))
+
+;; Note: Using (every? #(contains? set %)) in order to check for presence of
+;; `false` in a sequence of booleans.
+
+(defspec prop-no-added
+  ;; Any element in the sorted list has to have its equivalent in the unsorted
+  ;; list.
+  100
+  (prop/for-all [s gen-list-of-comparable]
+    (let [sorted (sort s)
+          set-s (set s)]
+      (every? #(contains? set-s %) sorted))))
+
+(defspec prop-no-removed
+  ;; Any element in the unsorted list has to have its equivalent in the sorted
+  ;; list.
+  100
+  (prop/for-all [s gen-list-of-comparable]
+    (let [sorted (sort s)
+          set-sorted (set sorted)]
+      (every? #(contains? set-sorted %) s))))
