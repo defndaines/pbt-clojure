@@ -20,6 +20,7 @@
   [s]
   (last (sort s)))
 
+
 (defspec prop-last
   100
   ;; pick a list and a last number.
@@ -27,3 +28,33 @@
                  known-last gen/int]
     (let [known-list (conj gend-list known-last)]
       (= known-last (last known-list)))))
+
+
+(defn ordered?
+  "Given a sequence, assert if each pair is ordered."
+  [s]
+  (every?
+    (fn ordered-pair [[a b]] (<= 0 (compare b a)))
+    (partition 2 1 s)))
+
+(def gen-list-of-comparable
+  "Unlike in Erlang, where all terms are comparable, we must limit our tests
+  against sort to things that extend java.lang.Comparable. Additionally, all
+  elements of a list must be sortable amongst themselves (i.e., we cannot
+  compare a number to a string). For doubles, NaN is not comparable, so
+  exclude."
+  (gen/one-of [(gen/list gen/boolean)
+               (gen/list gen/byte)
+               (gen/list gen/char)
+               (gen/list (gen/double* {:NaN? false}))
+               (gen/list gen/keyword)
+               (gen/list gen/keyword-ns)
+               (gen/list gen/large-integer)
+               (gen/list gen/ratio)
+               (gen/list gen/string)
+               (gen/list gen/uuid)]))
+
+(defspec prop-sort
+  100
+  (prop/for-all [s gen-list-of-comparable]
+    (ordered? (sort s))))
