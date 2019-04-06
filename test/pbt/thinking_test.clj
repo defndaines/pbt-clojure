@@ -15,3 +15,7 @@
   (prop/for-all [v (gen/such-that not-empty (gen/vector gen/int))]
     (= (model-biggest v)
        (pbt/biggest v))))
+
+(defn model-biggest  ; note: The function doesn't have to appear before use!
+  [s]
+  (last (sort s)))
