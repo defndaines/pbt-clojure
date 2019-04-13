@@ -88,3 +88,14 @@
     (let [sorted (sort s)
           set-sorted (set sorted)]
       (every? #(contains? set-sorted %) s))))
+
+
+;; Testing symmetric properties.
+
+#_(defspec prop-symmetric
+  ;; NOTE This can actually fail. prn-str and read-string are not symmetric.
+  100
+  (prop/for-all [s gen/any]
+    (let [encoded (pbt/encode s)]
+      (and (string? encoded)
+           (= s (pbt/decode encoded))))))
